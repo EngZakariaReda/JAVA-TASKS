@@ -6,7 +6,7 @@ public class Main {
         System.out.println("Input");
 
         Scanner inputScan = new Scanner(System.in);
-        MemoAndMomo winner = new MemoAndMomo(inputScan.nextDouble() , inputScan.nextDouble(), inputScan.nextDouble());
+        MemoAndMomo winner = new MemoAndMomo(inputScan.nextLong() , inputScan.nextLong(), inputScan.nextLong());
 
         System.out.println("Output");
         System.out.println(winner.getWinner());

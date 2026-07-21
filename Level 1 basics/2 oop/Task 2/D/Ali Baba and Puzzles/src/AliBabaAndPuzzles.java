@@ -1,10 +1,10 @@
 public class AliBabaAndPuzzles {
-    public int num1;
-    public int num2;
-    public int num3;
-    public int num4;
+    public long num1;
+    public long num2;
+    public long num3;
+    public long num4;
 
-    AliBabaAndPuzzles(int num1 ,int num2 ,int num3 ,int num4){
+    AliBabaAndPuzzles(long num1 ,long num2 ,long num3 ,long num4){
         this.num1 = num1;
         this.num2 = num2;
         this.num3 = num3;

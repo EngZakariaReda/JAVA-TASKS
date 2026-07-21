@@ -1,9 +1,9 @@
 public class MemoAndMomo{
-    public double a;
-    public double b;
-    public double k;
+    public long a;
+    public long b;
+    public long k;
 
-    MemoAndMomo(double a ,double b ,double k){
+    MemoAndMomo(long a ,long b ,long k){
         this.a = a;
         this.b = b;
         this.k = k;
