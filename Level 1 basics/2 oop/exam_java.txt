@@ -1,0 +1,57 @@
+
+Part A: 
+1 / b. A blueprint/template for creating objects 
+2 / b. An instance of a class 
+3 / b. new 
+4 / c. Compilation 
+5 / a. Wrapping data and methods together and restricting direct access to data 
+6 /c. private 
+7 / c. public 
+8 / b. Has the same name as the class and no return type 
+9 / b. A no-argument constructor automatically provided byJava if no constructor is defined 
+10 / b. this 
+11 / b. Acquire fields and methods from another class 
+12 / b. extends 13 / b. One 14 / b. To refer to the parent class’s members or constructor 
+15 / b. Redefining aparent class method in a child class with the same signature 
+16 / a.Having multiple methods in the same class with the same name but different parameter lists 
+17 / c. Both methods and constructors 
+18 / a.The ability of an object to take many forms 
+19 / b. Run-time (dynamic) polymorphism 
+20 / b. A class that cannot be instantiated directly andmay contain abstract methods 
+21 / c. abstract 
+22 / b. A contract that specifies methods a class must implement 
+23 / b. implements 
+24 / b. No,traditionally interface methods are abstract by default 
+25 / b. Anabstract class can have constructors and instance variables with state; an interface traditionally cannot 
+26 / a. The variable belongs to the class, not to individual objects 
+27 / b. Prevents the variable’s value from being changed after initialization 
+28 / a. It cannot be extended(no subclasses allowed) 
+29 / a. Calling another constructor of the sameclass from within a constructor 
+30 / b. It throws a NullPointerException
+
+Part B: 
+31 / False 
+32 / True 
+33 / True 
+34 / False 
+35 / True 
+36 / True 
+37 / True 
+38 / True 
+39 / False 
+40 / True
+
+Part C: 
+41 / Dog barks 
+42 / Overloading: same method name different
+parameters. Overriding: redefining parent method in child.
+43 / 3 
+44 /new Car().drive(); 
+45 / Compile-time error (cannot instantiate abstract
+class) 
+46 / Parent constructor Child constructor 
+47 / Error: non-static
+variable x in static context. Fix: make static or use object. 
+48 /Encapsulation protects data and improves maintainability. 
+49 / Hello! 
+50/ 5 6.0
