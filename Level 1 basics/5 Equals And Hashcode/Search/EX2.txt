@@ -1,0 +1,89 @@
+ex2:
+	Student student1 = new Student(1, "ahmed");
+        Student student2 = new Student(2, "osama");
+        Student student3 = new Student(1, "ali");
+
+        Set<Student> students = new HashSet<>();
+        students.add(new Student(1, "ahmed"));
+        students.add(new Student(2, "osama"));
+
+        System.out.println(students.contains(student1));
+        System.out.println(students.contains(student2));
+        System.out.println(students.contains(student3));
+
+The problem is The problem
+
+I expect:
+
+true
+true
+false
+
+but:
+
+false
+false
+false
+
+why:
+
+These are two different objects.
+
+Conceptually:
+
+student1			
+   ↓	
++----------------+
+| id = 1         |
+| name = ahmed   |
++----------------+
+
+        ≠
+
+object inside HashSet
+   ↓
++----------------+
+| id = 1         |
+| name = ahmed   |
++----------------+
+
+they are different object instances.
+
+Since your Student class hasn't defined its own equality rules, Java's default equals() from Object.
+
+Solution: 
+
+Override both equals() and hashCode() in Student.
+
+import java.util.Objects;
+
+public class Student {
+
+    private int id;
+    private String name;
+
+    public Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj)
+            return true;
+
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+
+        Student student = (Student) obj;
+
+        return id == student.id &&
+               Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+}

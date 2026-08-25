@@ -1,0 +1,72 @@
+ex1:
+	Set<Student> students = new HashSet<>();
+        students.add(new Student(1, "ahmed"));
+        students.add(new Student(1, "ahmed"));
+        students.add(new Student(2, "osama"));
+        students.add(new Student(2, "osama"));
+        students.add(new Student(3, "ali"));
+
+The problem is that HashSet does not automatically know that the two Student objects with the same data are duplicates.
+
+why:
+
+They have the same values, but they are different objects in memory.
+
+Conceptually:
+
+Object 1                    Object 2
++-------------+             +-------------+
+| id = 1      |             | id = 1      |
+| name=ahmed  |             | name=ahmed  |
++-------------+             +-------------+
+      ↑                           ↑
+   different                   different
+   object                      object
+
+HashSet uses hashCode() and equals() to determine whether an object is already in the set.
+
+By default, Student inherits these methods from Object, so they essentially identify objects based on their object identity, not your id and name values.
+
+Solution: 
+
+Override equals() and hashCode()
+
+Your Student class should implement them based on the fields that define when two students are considered equal.
+
+For example, if both id and name define equality:
+
+import java.util.Objects;
+
+public class Student {
+    private int id;
+    private String name;
+
+    public Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+
+        Student student = (Student) obj;
+
+        return id == student.id &&
+               Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
+    @Override
+    public String toString() {
+        return id + " " + name;
+    }
+}
