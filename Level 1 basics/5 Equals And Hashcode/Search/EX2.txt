@@ -11,7 +11,7 @@ ex2:
         System.out.println(students.contains(student2));
         System.out.println(students.contains(student3));
 
-The problem is The problem
+The problem is
 
 I expect:
 

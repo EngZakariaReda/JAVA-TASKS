@@ -15,9 +15,7 @@ ex3:
         System.out.println(map.containsValue(student2));
         System.out.println(map.containsValue(student3));
 
-The problem is The problem
-
-is that student1, student2, and the Student objects that you put into the HashMap are different objects in memory, even if they have the same values.
+The problem is that student1, student2, and the Student objects that you put into the HashMap are different objects in memory, even if they have the same values.
 
 why:
 
