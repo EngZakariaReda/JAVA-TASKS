@@ -1,0 +1,71 @@
+Section 1: Object-Oriented Programming (OOP) :
+
+1 - B. Overriding (Polymorphism)
+2 - B. To hide internal state and require all interaction through an object's methods
+3 - B. final
+4 - B. Same method name, different parameter list, in the same class
+5 - C. The current object instance
+6 - B. They can contain both abstract and concrete methods
+7 - B. A class can implement multiple interfaces but extend only one class
+8 - C. private
+9 - B. Allowing one interface/reference type to be used for different underlying object types
+10 - B. The runtime (actual object) type, Dog
+11 - B. The subclass must also be declared abstract, or it fails to compile
+12 - C. Compilation
+13 - A. Building a class by including instances of other classes as fields ('has-a' relationship)
+14 - B. extends
+15 - B. To initialize a newly created object
+16 - B. It must implement area() unless the class itself is abstract
+
+Section 2: Exceptions
+
+17 - C. Throwable
+18 - C. IOException
+19 - B. Declare it using the 'throws' clause
+20 - C. finally
+21 - A. throw new IllegalArgumentException("bad value");
+22 - C. NullPointerException
+23 - A. Preserving the original cause while wrapping it in a new exception type
+24 - B. It must implement AutoCloseable (or Closeable)
+25 - B. It can override/suppress a return or exception from the try/catch block
+26 - A. The caught exception types must not be related by subclassing to each other
+27 - B. Extending Exception or RuntimeException
+28 - B. An unhandled exception moving up the call stack to the caller
+29 - C. Catching generic Exception (or Throwable) and silently ignoring it
+30 - B. It propagates up unless handled by an enclosing try/catch or a following finally rethrows differently
+31 - B. It represents serious problems that applications typically should not try to catch
+32 - C. ABC
+
+Section 3: Collections Framework
+
+33 - C. Map
+34 - B. ArrayList
+35 - C. TreeSet
+36 - B. It does not guarantee any specific iteration order
+37 - C. LinkedHashMap
+38 - B. An immutable list that throws UnsupportedOperationException on modification
+39 - B. LinkedList is generally faster because it avoids shifting elements
+40 - B. ConcurrentModificationException
+41 - C. Map
+42 - B. Wraps the list so that structural modification attempts throw UnsupportedOperationException
+43 - B. Queue
+44 - C. O(1)
+45 - B. map.entrySet()
+46 - B. The old value is replaced with the new value
+47 - B. Set
+48 - B. To provide compile-time type safety and avoid explicit casting
+
+Section 4: equals() and hashCode()
+
+49 - B. If two objects are equal according to equals(), they must have the same hashCode()
+50 - B. Compares reference (memory address) equality, same as ==
+51 - C. To ensure the class works correctly with hash-based collections like HashMap and HashSet
+52 - B. They are not required to be different (they may or may not collide)
+53 - B. Objects that are equal() may end up in different hash buckets, breaking HashSet/HashMap lookups
+54 - A. It must be reflexive, symmetric, transitive, and consistent
+55 - B. false
+56 - B. Reference equality (this == obj) and null/class checks, then field comparisons
+57 - B. If the field changes after insertion, the object may become unfindable in the map
+58 - B. java.util.Objects
+59 - B. It safely handles the case where 'a' is null, avoiding a NullPointerException
+60 - B. The inherited Object identity-based equals() and hashCode(), based on reference/memory identity
