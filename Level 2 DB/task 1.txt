@@ -1,0 +1,54 @@
+1. Create Manger table
+
+CREATE TABLE Manger ( 
+	id NUMBER, 
+	name VARCHAR2(100), 
+	age NUMBER, 
+	birth_date DATE, 
+	address VARCHAR2(200) 
+);
+
+
+2. Drop address column
+
+ALTER TABLE Manger 
+DROP COLUMN address;
+
+
+3. Add city_address and street columns
+
+ALTER TABLE Manger 
+ADD ( 
+	city_address VARCHAR2(100), 
+	street VARCHAR2(150) 
+);
+
+
+4. Rename name column to full_name
+
+ALTER TABLE Manger 
+RENAME COLUMN name TO full_name;
+
+
+5. Make Manger table READ ONLY
+
+ALTER TABLE Manger READ ONLY;
+
+
+6. Create Owner table from Manger -- Only: id, name, birth_date -- No data will be copied
+
+
+CREATE TABLE Owner AS 
+SELECT id, full_name AS name, birth_date 
+FROM Manger WHERE 1 = 0;
+
+
+7. Rename Manger table to Master
+
+ALTER TABLE Manger 
+RENAME TO Master;
+
+8. Drop the tables
+
+DROP TABLE Master CASCADE CONSTRAINTS; 
+DROP TABLE Owner CASCADE CONSTRAINTS;
