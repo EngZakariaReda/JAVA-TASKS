@@ -1,0 +1,270 @@
+# 1. Character Functions – Part 3 (TRIM, LTRIM, RTRIM)
+
+```sql
+-- Q1. Create customers table and insert names with extra spaces.
+
+CREATE TABLE customers (
+    full_name VARCHAR2(100)
+);
+
+INSERT INTO customers VALUES ('   Zakaria Reda   ');
+INSERT INTO customers VALUES ('  Ahmed Ali');
+INSERT INTO customers VALUES ('Mohamed Hassan   ');
+INSERT INTO customers VALUES ('   Omar Khaled   ');
+
+
+-- Q2. Remove both leading and trailing spaces using TRIM.
+
+SELECT TRIM(full_name)
+FROM customers;
+
+
+-- Q3. Remove only leading spaces using LTRIM.
+
+SELECT LTRIM(full_name)
+FROM customers;
+
+
+-- Q4. Remove only trailing spaces using RTRIM.
+
+SELECT RTRIM(full_name)
+FROM customers;
+
+
+-- Q5. Remove specific characters from both sides.
+
+SELECT TRIM('$' FROM '$$$Zakaria$$$')
+FROM DUAL;
+
+SELECT TRIM('*' FROM '***Oracle***')
+FROM DUAL;
+
+SELECT TRIM('#' FROM '###SQL###')
+FROM DUAL;
+```
+
+---
+
+# 2. Character Functions – Part 4 (REPLACE, LPAD, RPAD)
+
+```sql
+-- Q1. Replace all occurrences of 'o' with '0' in promotion.
+
+SELECT REPLACE('promotion', 'o', '0')
+FROM DUAL;
+
+
+-- Q2. Replace basic with advanced.
+
+SELECT REPLACE('This is a basic course', 'basic', 'advanced')
+FROM DUAL;
+
+
+-- Q3. Create departments table and insert 3 records.
+
+CREATE TABLE departments (
+    dept_name VARCHAR2(50)
+);
+
+INSERT INTO departments VALUES ('Human Resources');
+INSERT INTO departments VALUES ('IT');
+INSERT INTO departments VALUES ('Sales');
+
+
+-- Q4. Pad department names with '*' on the left.
+
+SELECT LPAD(dept_name, 15, '*')
+FROM departments;
+
+
+-- Q5. Pad department names with '-' on the right.
+
+SELECT RPAD(dept_name, 15, '-')
+FROM departments;
+```
+
+---
+
+# 3. TO_CHAR Function
+
+```sql
+-- Q1. Display current date in DD-MON-YYYY format.
+
+SELECT TO_CHAR(SYSDATE, 'DD-MON-YYYY')
+FROM DUAL;
+
+
+-- Q2. Display current date in Day, Month YYYY format.
+
+SELECT TO_CHAR(SYSDATE, 'FMDay, FMMonth YYYY')
+FROM DUAL;
+
+
+-- Q3. Convert a number to a formatted string with commas and 2 decimal places.
+
+SELECT TO_CHAR(1234567.89, '9,999,999.99')
+FROM DUAL;
+
+
+-- Q4. Format employee salary with a currency symbol.
+
+SELECT 
+    FirstName,
+    Salary,
+    TO_CHAR(Salary, '$99,999.99') AS formatted_salary
+FROM Employees;
+
+
+-- Q5. Display system date in YYYY/MM/DD HH24:MI:SS format.
+
+SELECT TO_CHAR(SYSDATE, 'YYYY/MM/DD HH24:MI:SS')
+FROM DUAL;
+```
+
+---
+
+# 4. Oracle Conditional Expressions – CASE Expressions
+
+```sql
+-- Q1. Create students table and insert 5 records.
+
+CREATE TABLE students (
+    name VARCHAR2(50),
+    score NUMBER(3)
+);
+
+INSERT INTO students VALUES ('Zakaria', 95);
+INSERT INTO students VALUES ('Ahmed', 85);
+INSERT INTO students VALUES ('Mohamed', 75);
+INSERT INTO students VALUES ('Ali', 55);
+INSERT INTO students VALUES ('Omar', 90);
+
+
+-- Q2. Assign grades using CASE.
+
+SELECT
+    name,
+    score,
+    CASE
+        WHEN score >= 90 THEN 'A'
+        WHEN score >= 80 THEN 'B'
+        WHEN score >= 70 THEN 'C'
+        ELSE 'F'
+    END AS grade
+FROM students;
+
+
+-- Q3. Display Pass or Fail.
+
+SELECT
+    name,
+    score,
+    CASE
+        WHEN score >= 60 THEN 'Pass'
+        ELSE 'Fail'
+    END AS result
+FROM students;
+
+
+-- Q4. Display a message based on each student's grade.
+
+SELECT
+    name,
+    score,
+    CASE
+        WHEN score >= 90 THEN 'Excellent'
+        WHEN score >= 80 THEN 'Good'
+        WHEN score >= 70 THEN 'Average'
+        ELSE 'Needs Improvement'
+    END AS message
+FROM students;
+
+
+-- Q5. Display today's day name using CASE.
+
+SELECT
+    CASE TO_CHAR(SYSDATE, 'FMDAY')
+        WHEN 'MONDAY' THEN 'Today is Monday'
+        WHEN 'TUESDAY' THEN 'Today is Tuesday'
+        WHEN 'WEDNESDAY' THEN 'Today is Wednesday'
+        WHEN 'THURSDAY' THEN 'Today is Thursday'
+        WHEN 'FRIDAY' THEN 'Today is Friday'
+        WHEN 'SATURDAY' THEN 'Today is Saturday'
+        WHEN 'SUNDAY' THEN 'Today is Sunday'
+    END AS today
+FROM DUAL;
+```
+
+---
+
+# 5. Oracle Conditional Expressions – DECODE Function
+
+```sql
+-- Q1. Use DECODE to assign grades based on specific score values.
+
+SELECT
+    name,
+    score,
+    DECODE(
+        score,
+        100, 'A',
+        90,  'B',
+        80,  'C',
+        'F'
+    ) AS grade
+FROM students;
+
+
+-- Q2. Create status_log table and insert records.
+
+CREATE TABLE status_log (
+    status_code CHAR(1)
+);
+
+INSERT INTO status_log VALUES ('N');
+INSERT INTO status_log VALUES ('I');
+INSERT INTO status_log VALUES ('C');
+INSERT INTO status_log VALUES ('N');
+
+
+-- Q3. Convert status codes into full descriptions.
+
+SELECT
+    status_code,
+    DECODE(
+        status_code,
+        'N', 'New',
+        'I', 'In Progress',
+        'C', 'Completed',
+        'Unknown'
+    ) AS status_description
+FROM status_log;
+
+
+-- Q4. Check product quantity.
+
+SELECT
+    product_name,
+    quantity,
+    DECODE(
+        quantity,
+        0, 'Out of Stock',
+        'Available'
+    ) AS stock_status
+FROM products;
+
+
+-- Q5. Display employee bonus based on department.
+
+SELECT
+    FirstName,
+    Department,
+    DECODE(
+        Department,
+        'HR', 500,
+        'IT', 1000,
+        'Sales', 1500,
+        300
+    ) AS bonus
+FROM Employees;
+```

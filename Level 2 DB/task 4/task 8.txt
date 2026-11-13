@@ -1,0 +1,165 @@
+```sql
+-- 1. AVG Function
+-- Calculate the average salary of all employees.
+
+SELECT AVG(SALARY)
+FROM EMPLOYEES;
+
+
+-- 2. COUNT Function
+-- Count the total number of employees.
+
+SELECT COUNT(*)
+FROM EMPLOYEES;
+
+
+-- 3. MAX Function
+-- Find the maximum salary.
+
+SELECT MAX(SALARY)
+FROM EMPLOYEES;
+
+
+-- 4. MIN Function
+-- Find the minimum salary.
+
+SELECT MIN(SALARY)
+FROM EMPLOYEES;
+
+
+-- 5. SUM Function
+-- Calculate the total salary.
+
+SELECT SUM(SALARY)
+FROM EMPLOYEES;
+
+
+-- 6. GROUP BY Clause (Part 1)
+-- Display department ID and average salary per department.
+
+SELECT DEPARTMENT_ID, AVG(SALARY)
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID;
+
+
+-- 7. GROUP BY Clause (Part 2)
+-- Display job ID and number of employees per job.
+
+SELECT JOB_ID, COUNT(*)
+FROM EMPLOYEES
+GROUP BY JOB_ID;
+
+
+-- 8. HAVING Clause
+-- Display departments where total salary exceeds 50000.
+
+SELECT DEPARTMENT_ID, SUM(SALARY)
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID
+HAVING SUM(SALARY) > 50000;
+
+
+-- 9. AVG Function (Advanced)
+-- Calculate average commission for employees with non-null commission.
+
+SELECT AVG(COMMISSION_PCT)
+FROM EMPLOYEES
+WHERE COMMISSION_PCT IS NOT NULL;
+
+
+-- 10. COUNT Function (Advanced)
+-- Count employees with salary greater than 10000.
+
+SELECT COUNT(*)
+FROM EMPLOYEES
+WHERE SALARY > 10000;
+
+
+-- 11. MAX and MIN Together
+-- Find maximum and minimum salary within each job.
+
+SELECT
+    JOB_ID,
+    MAX(SALARY),
+    MIN(SALARY)
+FROM EMPLOYEES
+GROUP BY JOB_ID;
+
+
+-- 12. SUM Function (Advanced)
+-- Calculate total salary for each manager.
+
+SELECT MANAGER_ID, SUM(SALARY)
+FROM EMPLOYEES
+GROUP BY MANAGER_ID;
+
+
+-- 13. GROUP BY with Multiple Columns
+-- Display total salary for each department and job combination.
+
+SELECT
+    DEPARTMENT_ID,
+    JOB_ID,
+    SUM(SALARY)
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID, JOB_ID;
+
+
+-- 14. HAVING with COUNT
+-- Display jobs that have more than 5 employees.
+
+SELECT JOB_ID, COUNT(*)
+FROM EMPLOYEES
+GROUP BY JOB_ID
+HAVING COUNT(*) > 5;
+
+
+-- 15. Using Aggregate Functions Together
+-- Display department statistics.
+
+SELECT
+    DEPARTMENT_ID,
+    COUNT(*) AS TOTAL_EMPLOYEES,
+    AVG(SALARY) AS AVERAGE_SALARY,
+    MAX(SALARY) AS MAXIMUM_SALARY,
+    MIN(SALARY) AS MINIMUM_SALARY
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID;
+
+
+-- 16. Complex HAVING
+-- Departments with average salary > 8000
+-- and fewer than 10 employees.
+
+SELECT
+    DEPARTMENT_ID,
+    AVG(SALARY),
+    COUNT(*)
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID
+HAVING AVG(SALARY) > 8000
+AND COUNT(*) < 10;
+
+
+-- 17. Nested Aggregation
+-- Find the department with the highest total salary.
+
+SELECT
+    DEPARTMENT_ID,
+    SUM(SALARY) AS TOTAL_SALARY
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID
+ORDER BY TOTAL_SALARY DESC
+FETCH FIRST 1 ROW ONLY;
+
+
+-- 18. Using Aliases with Aggregates
+-- Display total and average salary per department.
+
+SELECT
+    DEPARTMENT_ID,
+    SUM(SALARY) AS TOTAL_SALARY,
+    AVG(SALARY) AS AVERAGE_SALARY
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID;
+```

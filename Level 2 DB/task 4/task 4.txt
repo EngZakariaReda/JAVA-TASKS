@@ -1,0 +1,29 @@
+-- Q1. Create a table STUDENTS with columns: name, marks.
+
+CREATE TABLE STUDENTS (
+    name VARCHAR2(50),
+    marks NUMBER(3)
+);
+
+
+-- Q2. Insert 5 sample students with marks.
+
+INSERT INTO STUDENTS VALUES ('Zakaria', 95);
+INSERT INTO STUDENTS VALUES ('Ahmed', 85);
+INSERT INTO STUDENTS VALUES ('Mohamed', 75);
+INSERT INTO STUDENTS VALUES ('Ali', 60);
+INSERT INTO STUDENTS VALUES ('Omar', 88);
+
+
+-- Q3. Use CASE to assign grades.
+
+SELECT 
+    name,
+    marks,
+    CASE
+        WHEN marks >= 90 THEN 'A'
+        WHEN marks >= 80 THEN 'B'
+        WHEN marks >= 70 THEN 'C'
+        ELSE 'F'
+    END AS grade
+FROM STUDENTS;
